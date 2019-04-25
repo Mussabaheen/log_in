@@ -28,6 +28,7 @@ class _loginpageState extends State<loginpage> with SingleTickerProviderStateMix
 
     AnimationController _iconanimationcontroller; //adding animations
     Animation<double> iconanimation;
+    String Name="Mussabaheen";
 
 
     @override  //implementing animations here
@@ -45,6 +46,17 @@ class _loginpageState extends State<loginpage> with SingleTickerProviderStateMix
           iconanimation.addListener(()=>this.setState((){}));
           _iconanimationcontroller.forward();
           
+
+    }
+
+
+    void Button_pressed()
+    {
+        setState(() {
+          Name="Formals.pk";
+
+          //This is the log in button pressed function write code here
+        });
 
     }
 
@@ -67,6 +79,11 @@ class _loginpageState extends State<loginpage> with SingleTickerProviderStateMix
 
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  new Text(
+                    Name,
+                    style: new TextStyle(fontSize: 20,color: Colors.teal),
+                  ),
+                  new Padding(padding:EdgeInsets.all(20)),
                   new FlutterLogo(
                     size: _iconanimationcontroller.value*100,
 
@@ -75,6 +92,8 @@ class _loginpageState extends State<loginpage> with SingleTickerProviderStateMix
                   new Form(
                       child:new Theme(
                         data: new ThemeData(
+                            primaryColor: Colors.teal,
+
                             brightness:Brightness.dark,
                             primarySwatch: Colors.teal,
                             inputDecorationTheme:new InputDecorationTheme(labelStyle: new TextStyle(color: Colors.teal,fontSize: 20))
@@ -88,6 +107,7 @@ class _loginpageState extends State<loginpage> with SingleTickerProviderStateMix
                               new TextFormField(
                                 decoration: new InputDecoration(
                                     labelText: "Enter Email",
+                                    errorText: "Not Valid",
 
 
                                 ),
@@ -102,19 +122,21 @@ class _loginpageState extends State<loginpage> with SingleTickerProviderStateMix
                                 obscureText: true,
                               ),
                               new Padding(padding: const EdgeInsets.all(20.0)),
-                              new RaisedButton(
+                              new MaterialButton(
                                 textColor: Colors.white,
                                 color: Colors.teal,
                                 child: new Text("Log in"
                                 ),
-                                onPressed: ()=>{},
+                                onPressed:Button_pressed
 
-                              )
+                              ),
+                              //new Text(Name)
                             ],
                           ),
                         ),
                       )
                   )
+
                 ],
 
             ),
